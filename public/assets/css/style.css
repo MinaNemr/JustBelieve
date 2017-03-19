@@ -1,0 +1,90 @@
+body {
+	padding-top:0px;
+    font-family: "Source Sans Pro","Helvetica Neue",Helvetica,Arial,sans-serif;
+   
+}
+#inputs{
+	margin-top: 80px;
+	align-content: center;
+	width :1000px;
+}
+#bg {
+  position: fixed; 
+  top: 0; 
+  left: 0; 
+
+  /* Preserve aspet ratio */
+  min-width: 100%;
+  min-height: 100%;
+}
+img{
+	height: 50px;
+	width: 300px;
+}
+.container{
+	margin-top: 0px;
+}
+h1{
+	align: center;
+	font-family:"Arial Black", Gadget, sans-serif;
+	color: #535353;
+	margin-top: 0px;
+}
+
+a {
+	align: center;
+	font-size: 30px;
+	color: #00B7FF;
+	font-family:"Arial Black", Gadget, sans-serif;
+}
+
+p{
+	align: center;
+	font-size: 30px;
+	font-family:"Arial Black", Gadget, sans-serif;
+}
+label{
+	font-size: 30px;
+}
+#s{
+	width: 200px;
+	font-size: 50px;
+}
+#select{
+	margin-left: 30px;
+	width: 300px;
+	font-size: 50px;
+}
+#bla{
+	margin-top: 65px;
+	margin-left: 30px;
+	width: 200px;
+	font-size: 25px;
+}
+#bla2{
+	font-size: 30px;
+}
+
+#title{
+	color: #FFFFFF;
+	
+}
+.progress{
+	margin-top: 0px;
+	height: 40px;
+	margin-bottom: 0px;
+}
+.thumbnail{
+	background-color:transparent;
+	border: 0 none;
+    box-shadow: none;
+    margin-bottom: 15px;
+}
+
+nav{
+	display: block;
+}
+
+md-select{
+	font-size: 30px;
+}
