@@ -1,7 +1,7 @@
 body {
 	height: auto;
 	padding-top:0px;
-	background-image: url("../img/Background.jpg");
+	background-image: url("http://cdn.history.com/sites/2/2013/03/Bible-Thomas.jpg");
 	background-size: 100% 100%;
     font-family: "Source Sans Pro","Helvetica Neue",Helvetica,Arial,sans-serif;
    
@@ -20,7 +20,7 @@ h1{
 }
 
 md-input-container label{
-	color: orange;
+	color: #d9904f;
 	font-size: 25px;
 }
 
@@ -48,4 +48,11 @@ md-input-container .md-input{
 	height: 40px;
 	margin-bottom: 0px;
 	text-align: center;
+}
+.verse{
+	color: #d9904f;
+	position: absolute;
+	font-size: 50px;
+	left: 70px;
+	bottom:30px;
 }
