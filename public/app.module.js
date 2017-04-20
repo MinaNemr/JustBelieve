@@ -1,1 +1,1 @@
-var app = angular.module('EgoEimi', ['ngMaterial']);
+var app = angular.module('JustBelieve', ['ngMaterial']);

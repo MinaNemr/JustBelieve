@@ -1,137 +1,41 @@
 app.controller('mainController', function($scope, $http, $mdDialog){
-	$scope.title= 'Ego Eimi';
-		$http.get('/api/teams/top_teams').success(function(data){
-		    $scope.topTeams = data;
-		    $scope.topTeams[0].bar = data[0].score * 0.017;
-		    $scope.topTeams[1].bar = data[1].score * 0.017;
-		    $scope.topTeams[2].bar = data[2].score * 0.017;
-		    $scope.topTeams[3].bar = data[3].score * 0.017;
-		    $scope.topTeams[4].bar = data[4].score * 0.017;
-		    $scope.topTeams[5].bar = data[5].score * 0.017;
-		    $scope.topTeams[6].bar = data[6].score * 0.017;
-		    $scope.topTeams[7].bar = data[7].score * 0.017;
+		$http.get('/api/boys/top_boys').success(function(data){
+		    $scope.topBoys = data;
+		    $scope.topBoys[0].bar = (data[0].score /(data[0].score + 3) * 100);
+		    $scope.topBoys[1].bar = (data[1].score/(data[0].score + 3) * 100);
+		    $scope.topBoys[2].bar = (data[2].score/(data[0].score + 3) * 100);
 	    });
 
-	    $scope.teams = [
-	    {
-	    	color:'black',
-	    	id:1
-	    },
-	    {
-	    	color:'electric',
-	    	id:2
-	    },
-	    {
-	    	color:'blue',
-	    	id:3
-	    },
-	    {
-	    	color:'grey',
-	    	id:4
-	    },
-	    {
-	    	color:'yellow',
-	    	id:5
-	    },
-	    {
-	    	color:'orange',
-	    	id:6
-	    },
-	    {
-	    	color:'red',
-	    	id:7
-	    },
-	    {
-	    	color:'green',
-	    	id:8
-	    }
-	    ];
-
-	    $scope.behaviors = [
-	    {
-	    	name:'شتيمة',
-	    	value:-20
-	    },
-	    {
-	    	name:'ضرب',
-	    	value:-70
-	    },
-	    {
-	    	name:'عدم التزام',
-	    	value:-100
-	    },
-	    {
-	    	name:'عدم احترام الخدام',
-	    	value:-150
-	    },
-	    {
-	    	name:'عدم الهدوء',
-	    	value:-50
-	    },
-	    {
-	    	name:'اجابات',
-	    	value:50
-	    },
-	    {
-	    	name:'التزام',
-	    	value:130
-	    },
-	    {
-	    	name:'نظافة',
-	    	value:100
-	    },
-	    {
-	    	name:'هدوء',
-	    	value:70
-	    },
-	    {
-	    	name:'روحانية',
-	    	value:200
-	    }
-	    ];
-
 	    $scope.submit = function(){
-	    	if($scope.code == 777){
-	    		$http({
-					  method: 'PUT',
-					  url: '/api/teams/'+$scope.selectedTeam+'/'+$scope.selectedBehavior
-					}).then(function successCallback(response) {
-						$http.get('/api/teams/top_teams').success(function(data){
-						    $scope.topTeams = data;
-						    $scope.topTeams[0].bar = data[0].score * 0.017;
-						    $scope.topTeams[1].bar = data[1].score * 0.017;
-						    $scope.topTeams[2].bar = data[2].score * 0.017;
-						    $scope.topTeams[3].bar = data[3].score * 0.017;
-						    $scope.topTeams[4].bar = data[4].score * 0.017;
-						    $scope.topTeams[5].bar = data[5].score * 0.017;
-						    $scope.topTeams[6].bar = data[6].score * 0.017;
-						    $scope.topTeams[7].bar = data[7].score * 0.017;
-						    $mdDialog.hide();
-					    });
-					  }, function errorCallback(response) {
-					  	alert = $mdDialog.alert()
-				        .title('failure')
-				        .textContent('Score not Updated !!')
-				        .ok('Close');
-				      $mdDialog
-				          .show( alert )
-				          .finally(function() {
-				            alert = undefined;
-				          });
-					  });
+			$http.get('/api/boys/'+$scope.user_name).success(function(data) {
+				if ((typeof data[0] != 'undefined') && $scope.id === ('' + data[0]._id)) {
+					console.log("Yes");
+					alert = $mdDialog.alert()
+						.title('Your score is')
+						.textContent(data[0].score)
+						.ok('Thanks !!');
+					$mdDialog
+						.show(alert)
+						.finally(function () {
+							alert = undefined;
+						});
 
-	    		
-		    }
-	    	else
-	    		alert = $mdDialog.alert()
-		        .title('error')
-		        .textContent('wrong code')
-		        .ok('Close');
-		      $mdDialog
-		          .show( alert )
-		          .finally(function() {
-		            alert = undefined;
-		          });
+				}
+				else {
+
+				alert = $mdDialog.alert()
+					.title('Error')
+					.textContent('Wrong User Name or ID, try again')
+					.ok('Close');
+				$mdDialog
+					.show(alert)
+					.finally(function () {
+						alert = undefined;
+					});
+				console.log($scope.id);
+			}
+			});
+
 	    }
 
 });

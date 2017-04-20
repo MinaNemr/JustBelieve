@@ -1,59 +1,39 @@
 <html>
   <head>
-    <title>Ego eimi</title>
+    <title>Just Believe</title>
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.3/angular.min.js"></script>
     <link rel="stylesheet" href="https:ajax.googleapis.com/ajax/libs/angular_material/1.1.0-rc2/angular-material.min.css">
     <link rel="stylesheet" href="https:maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
     <link rel="stylesheet" href="assets/css/style.css">
   </head>
-  <body ng-app="EgoEimi" ng-controller="mainController">
-    <img src="./assets/img/Website-Background.jpg" id="bg" alt="">
+  <body ng-app="JustBelieve" ng-controller="mainController">
+    <div class="overlay-gradient"></div>
     <div id='main' class="container">
-      <nav class="navbar-fluid navbar-inverse navbar-fixed-top">
-        <div class="container">
-          <p class="navbar-text"> prin abraam genesthai, ego eimi</p>
-          <p class="navbar-right navbar-text"><a href="/">Update Scores</a> </p>
+      <div class="row inputs">
+        <md-input-container class="inputs__input">
+          <label>User Name</label>
+          <input class="input" type= "name" ng-model ="user_name">
+        </md-input-container>
+        <md-input-container class="inputs__input">
+          <label>ID</label>
+          <input type= "password" ng-model ="id">
+        </md-input-container>
+        <md-button class="md-warn md-raised md-hue-2" ng-click="submit()">Get My Score</md-button>
+      </div>
+      <div class="row" >
+        <div class="col-lg-12">
+          <h1>Top 3</h1>
         </div>
-      </nav>
-        <div class="row" id="inputs">
-          <md-input-container  flex-gt-sm id="s">
-                <label>saaasaaaaaadd</label>
-                <md-select ng-model="selectedTeam">
-                  <md-option ng-repeat="team in teams" value="{{team.id}}">
-                    {{team.color}}
-                  </md-option>
-                </md-select>
-              </md-input-container>
-              <md-input-container flex-gt-sm id="select" >
-                <label>Behavior</label>
-                <md-select ng-model="selectedBehavior">
-                  <md-option ng-repeat="behavior in behaviors" value="{{behavior.value}}" >
-                    {{behavior.name}}
-                  </md-option>
-                </md-select>
-              </md-input-container>
-              <md-input-container id="bla">
-                <label>Code</label>
-                <input type= "password" ng-model ="code">
-              </md-input-container>
-              <md-button  id="bla2"  class="md-raised md-warn" ng-click="submit()"> Submit!</md-button>
-          </div>
-          <div class="row" >
-            <div class="col-sm-3" ng-repeat="team in topTeams| orderBy:'-score'" >
-              <div class="thumbnail" >
-                  <img ng-src="assets/img/{{team._id}}.png">
-                  <div class="caption">
-                    <div class="progress" id = "bla">
-                      <div class="progress-bar progress-bar-warning"  role="progressbar" aria-valuenow="3000" aria-valuemin="0" aria-valuemax="3000" style="width: {{team.bar}}%">
-                        <h1 align="center">{{team.score}}</h1>
-                      </div>
-                    </div>
-                    <p></p>
-                  </div>
-              </div>
+        <div class="col-lg-4" ng-repeat="boy in topBoys| orderBy:'-score'" >
+          <h3 class="boy__name">{{boy.user_name}}</h3>
+          <div class="progress boy__score" >
+            <div class="progress-bar progress-bar-warning"  role="progressbar"  style="width: {{boy.bar}}%">
+              <h1 >{{boy.score}}</h1>
             </div>
           </div>
+        </div>
       </div>
+    </div>
 
     <script src="app.module.js"></script>
     <script src="controllers/main.js"></script>
